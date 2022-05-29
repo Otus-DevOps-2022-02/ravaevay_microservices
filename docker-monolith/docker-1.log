@@ -1,0 +1,7 @@
+
+REPOSITORY                 TAG       IMAGE ID       CREATED         SIZE
+ravaevay/ubuntu-tmp-file   latest    627177ab56d4   2 minutes ago   63.2MB
+ubuntu                     18.04     c6ad7e71ba7d   3 weeks ago     63.2MB
+portainer/agent            <none>    d648b5564a12   7 weeks ago     155MB
+haproxy                    latest    645e4ef01d91   3 months ago    101MB
+portainer/portainer        latest    580c0e4e98b0   14 months ago   79.1MB
