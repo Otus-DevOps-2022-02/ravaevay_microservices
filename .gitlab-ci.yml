@@ -43,8 +43,8 @@ staging:
     name: beta
     url: http://beta.example.com
 
-  production:
-    stage: production
+production:
+  stage: production
   when: manual
   script:
     - echo 'Deploy'
