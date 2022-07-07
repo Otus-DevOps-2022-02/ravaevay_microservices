@@ -1,6 +1,17 @@
 # ravaevay_microservices
 ravaevay microservices repository
 
+Задание №16
+Gitlab-CI
+
+ - Выполнена установка Gitlab-CI в Docker Swarm
+ - В конфигурацию стека добавлена установка gitlan-runner
+ - Gitlab-runner успешно зарегистрирован в Gitlab-CI
+```
+docker exec -it gitlab-ci_gitlab-runner.1.47sbpkxqunl2l5ui634x868pf gitlab-runner register --url http://192.168.223.233/ --non-interactive --locked=false --name DockerRunner --executor docker --docker-image alpine:latest --registration-token "TOKEN" --tag-list "linux,xenial,ubuntu,docker" --run-untagged
+```
+ - Добавлены динамические окружения
+
 Задание №15
 Docker и сети
 
