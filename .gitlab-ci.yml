@@ -14,6 +14,19 @@ before_script:
   - cd reddit
   - bundle install
 
+Build_reddit:
+  stage: build
+  image: docker:20.10.16
+  services:
+    - docker:20.10.16-dind
+  before_script:
+    - cd reddit
+  script:
+    - docker run --name reddit -d -p 9292:9292 53005300/otus-reddit:1.0
+  environment:
+    name: reddit-1.0/$CI_COMMIT_REF_NAME
+    url: http://$CI_ENVIRONMENT_SLUG.reddit.example.com
+
 test_unit_job:
   image: ruby:2.4.2
   stage: test
@@ -69,12 +82,3 @@ production:
   environment:
     name: production
     url: http://example.com
-
-Build:
-  image: 53005300/otus-reddit:1.0
-  stage: build
-  script:
-    - docker run --name reddit -d -p 9292:9292 53005300/otus-reddit:1.0
-  environment:
-    name: reddit-1.0/$CI_COMMIT_REF_NAME
-    url: http://$CI_ENVIRONMENT_SLUG.reddit.example.com
