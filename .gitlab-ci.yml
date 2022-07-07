@@ -21,6 +21,9 @@ test_unit_job:
     - mongo:latest
   script:
     - ruby simpletest.rb
+  environment:
+    name: dev
+    url: http://dev.example.com
 
 test_integration_job:
   stage: test
