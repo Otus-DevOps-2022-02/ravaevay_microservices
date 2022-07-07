@@ -15,6 +15,7 @@ before_script:
   - bundle install
 
 test_unit_job:
+  image: ruby:2.4.2
   stage: test
   services:
     - mongo:latest
