@@ -1,0 +1,100 @@
+version: '3.3'
+services:
+  post_db:
+    image: mongo:latest
+    volumes:
+      - post_db:/data/db
+    networks:
+      BACK_NET:
+        aliases:
+          - post_db
+          - comment_db
+
+  ui:
+    #build: ./ui
+    image: ${USERNAME}/ui:latest
+    ports:
+      - ${UI_PORT}:9292/tcp
+    networks:
+      BACK_NET:
+        aliases:
+          - ui
+  post:
+   # build: ./post-py
+    image: ${USERNAME}/post:latest
+    networks:
+      BACK_NET:
+        aliases:
+          - post
+      FRONT_NET:
+        aliases:
+          - post
+  comment:
+    #build: ./comment
+    image: ${USERNAME}/comment:latest
+    networks:
+      BACK_NET:
+        aliases:
+          - comment
+      FRONT_NET:
+        aliases:
+          - comment
+
+  prometheus:
+    image: ${USERNAME}/prometheus
+    ports:
+      - '9090:9090'
+    volumes:
+      - prometheus_data:/prometheus
+    command: # Передаем доп параметры в командной строке
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention=1d' # Задаем время хранения метрик в 1 день
+    networks:
+      - BACK_NET
+      - FRONT_NET
+
+  node-exporter:
+    image: prom/node-exporter:v0.15.2
+    user: root
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
+    networks:
+      - BACK_NET
+
+  mongod-exporter:
+    image: percona/mongodb_exporter:0.20
+    ports:
+      - 9216:9216
+      - 17001:17001
+    command:
+      - '--mongodb.uri=mongodb://post_db:27017'
+    networks:
+      BACK_NET:
+
+  blackbox-exporter:
+    image: prom/blackbox-exporter:v0.21.0
+    user: root
+    networks:
+      BACK_NET:
+      FRONT_NET:
+
+volumes:
+  post_db:
+  prometheus_data:
+
+networks:
+  BACK_NET:
+    ipam:
+      config:
+        - subnet: ${BACKNET_SUBNET_PREF}
+  FRONT_NET:
+    ipam:
+      config:
+        - subnet: ${FRONTNET_SUBNET_PREF}
