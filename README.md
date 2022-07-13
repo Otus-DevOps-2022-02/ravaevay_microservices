@@ -1,6 +1,15 @@
 # ravaevay_microservices
 ravaevay microservices repository
 
+Задание №17
+Системы мониторинга. Мониторинг с Prometheus
+
+ - Созданы Dockerfile и конфигурация Prometheus. Команда для сборки всех образов приложений:
+ - docker-compose.yml отредактирован для запуска контейнеров с системой мониторинга Prometheus.
+ - Собран образ Prometheus c node-exporter, mongod-exporter (percona/mongodb_exporter), blackbox-exporter.
+ - Все контейнеры выгружены в DockerHub
+
+
 Задание №16
 Gitlab-CI
 
