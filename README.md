@@ -1,6 +1,14 @@
 # ravaevay_microservices
 ravaevay microservices repository
 
+Задание №18
+Системы логирования. Стек EFK.
+
+    - Создан docker-compose.logging для поднятия стека EKF.
+    - Cобран образ Fluentd с elasticsearch-plugin и grok-parser. Изменен конфиг fluent.conf - добавлены grok patterns для парсинга логов с микросервисов post
+      и ui (структурированные и неструктурированные логи).
+    - Добавлен сервис Zipkin для трейсинга запросов.
+
 Задание №17
 Системы мониторинга. Мониторинг с Prometheus
 
