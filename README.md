@@ -1,6 +1,14 @@
 # ravaevay_microservices
 ravaevay microservices repository
 
+Задание №20
+
+ - В локальном окружении установлен Minikube.
+ - В каталоге kubernetes/reddit созданы манифесты для Deployment ui, post, comment.
+ - Созданы манифесты для сервисов приложения reddit. Проброшены порты, подключен Persistance Volume для mongo.
+ - Создано рабочее окружение DEV в minikube, включен dashboard.
+ - Создан Kubernetes в YC.
+
 Задание №19
 
  - В Terraform поднята инфрастурктура под k8s.
