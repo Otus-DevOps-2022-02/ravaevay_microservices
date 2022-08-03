@@ -1,6 +1,15 @@
 # ravaevay_microservices
 ravaevay microservices repository
 
+Задание №19
+
+ - В Terraform поднята инфрастурктура под k8s.
+ - В Ansible добавлена роль для k8s
+ - Установлен сетевой плагин Calico
+ - Добавлены манифесты reddit приложения
+
+  Шаблоны для terraform и ansible в директории kubernetes.
+
 Задание №18
 Системы логирования. Стек EFK.
 
