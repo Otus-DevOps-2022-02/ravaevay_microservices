@@ -1,0 +1,9 @@
+service:
+  internalPort: 5000
+  externalPort: 5000
+
+image:
+  repository: 53005300/post
+  tag: latest
+
+databaseHost:
