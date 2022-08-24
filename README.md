@@ -1,6 +1,18 @@
 # ravaevay_microservices
 ravaevay microservices repository
 
+Задание №21
+K8s Ingress, SSL Termination, PVC
+
+  - установлен Ingress-контроллер
+  - настроен Ingress для компонента ui
+  - настроен прием только HTTPS-трафика при помощи Secret
+  - Создан манифест для TLS-Secret
+  - описан манифест для использования NetworkPolicy, настроена сетевая политика для компонента mongo: разрешены входящие подключения от компонентов comment и post
+  - в Yandex Cloud создан диск
+  - настроены PersistentVolume (PV) и PersistentVolumeClaim (PVC)
+  - PVC подключен к развертыванию mongo для постоянного хранения данных БД
+
 Задание №20
 
  - В локальном окружении установлен Minikube.
