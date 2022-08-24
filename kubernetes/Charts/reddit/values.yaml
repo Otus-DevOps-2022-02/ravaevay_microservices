@@ -1,0 +1,20 @@
+comment:
+  image:
+    repository: 53005300/comment
+    tag: latest
+  service:
+    externalPort: 9292
+
+post:
+  image:
+    repository: 53005300/post
+    tag: latest
+  service:
+    externalPort: 5000
+
+ui:
+  image:
+    repository: 53005300/ui
+    tag: latest
+  service:
+    externalPort: 9292
